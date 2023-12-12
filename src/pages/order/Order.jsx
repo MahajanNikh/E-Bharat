@@ -4,12 +4,13 @@ import myContext from '../../context/data/myContext'
 
 const Order = () => {
   const context = useContext(myContext)
-  const { state, color } = context;
+  // const { state, color } = context;
   return (
     <Layout>
-      <h1>Name: {state.name}</h1>
+      {/* <h1>Name: {state.name}</h1>
       <h2>RollNo: {state.rollno}</h2>
-      <h3>color: {color}</h3>
+      <h3>color: {color}</h3> */}
+      Order
     </Layout>
   )
 }
