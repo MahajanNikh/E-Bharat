@@ -2,6 +2,10 @@ import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import myContext from '../../context/data/myContext'
 import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth, fireDB } from '../../firebase/FirebaseConfig';
+import { Timestamp, addDoc, collection } from 'firebase/firestore';
+import Loader from '../../components/loader/Loader';
 
 function Signup() {
     const [name, setName] = useState("");
@@ -11,16 +15,60 @@ function Signup() {
     const context = useContext(myContext)
     const { loading, setLoading } = context;
 
-    const signup = () => {
+    const signup = async () => {
+        setLoading(true)
         // console.log(name, email, password)
-        if (name === "" || email === "" || password === "")
-        {
+        if (name === "" || email === "" || password === "") {
             return toast.error("All fields are required")
+        }
+        try {
+            const users = await createUserWithEmailAndPassword(auth, email, password)
+            // console.log(users);
+            var user = {
+                name: name,
+                uid: users.user.uid,
+                email: users.user.email,
+                time: Timestamp.now()
+            }
+            // console.log(user)
+
+            const userRef = collection(fireDB, "users")
+            await addDoc(userRef, user);
+            toast.success('Signup Successfully', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setEmail("");
+            setName("");
+            setPassword("")
+
+            setLoading(false)
+
+        } catch (error) {
+            toast.error('Signup Failed', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            console.log(error)
+            setLoading(false)
         }
     }
 
     return (
         <div className=' flex justify-center items-center h-screen'>
+            {loading && <Loader/>}
             <div className=' bg-gray-800 px-10 py-10 rounded-xl '>
                 <div className="">
                     <h1 className='text-center text-white text-xl mb-4 font-bold'>Signup</h1>
