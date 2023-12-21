@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const logout = () => {
     localStorage.clear('user');
-    window.location.href = '/login'
+    // window.location.href = '/login'
   }
 
   const cartItems = useSelector((state) => state.cart)
@@ -82,9 +82,9 @@ const Navbar = () => {
                   </div> : ""}
 
                   {user ? <div className="flow-root">
-                    <a onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    <Link to={`/login`} onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
                       Logout
-                    </a>
+                    </Link>
                   </div> : ""}
 
                   <div className="flow-root">
@@ -162,9 +162,9 @@ const Navbar = () => {
                     Signup
                   </Link> : ''}
 
-                  {user ? <a onClick={logout} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  {user ? <Link to={`/login`} onClick={logout} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Logout
-                  </a> : ""}
+                  </Link> : ""}
 
                 </div>
 
