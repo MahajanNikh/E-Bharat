@@ -128,7 +128,7 @@ function Cart() {
   return (
     <Layout>
       <div
-        className="h-screen bg-gray-100 pt-5 mb-[60%]"
+        className=" bg-gray-100 pt-5 mb-5"
         style={{
           backgroundColor: mode === "dark" ? "#282c34" : "",
           color: mode === "dark" ? "white" : "",

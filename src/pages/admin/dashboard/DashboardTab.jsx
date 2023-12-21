@@ -196,7 +196,7 @@ function DashboardTab() {
                                     {
                                         order.flatMap((allorder, index) =>
                                             allorder.cartItems.map((item, itemIndex) => {
-                                                console.log(allorder);
+                                                // console.log(allorder);
                                                 const { title, description, category, imageUrl, price } = item;
                                                 return (
                                                     <tbody key={index * 1000 + itemIndex}>
