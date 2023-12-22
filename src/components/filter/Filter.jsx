@@ -5,6 +5,8 @@ function Filter() {
     const context = useContext(myContext)
     const { mode, searchkey, setSearchkey, filterType, setFilterType, filterPrice, setFilterPrice, product } = context
 
+    const uniqueCategories = [...new Set(product.map(item => item.category))];
+
     const resetFunction = () => {
         setSearchkey('')
         setFilterType('')
@@ -46,19 +48,19 @@ function Filter() {
                         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
                             <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
                                 {
-                                    product.map((item, index) => {
-                                        // console.log(item)
-                                        return (
-                                            <option key={index} value={item.category}>{item.category}</option>
-                                        )
-                                    })
+                                    uniqueCategories.map((category, index) => (
+                                        <option key={index} value={category}>
+                                            {category}
+                                        </option>
+                                    ))
                                 }
                             </select>
                             <select value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
                                 {
                                     product.map((item, index) => {
                                         return (
-                                            <option key={index} value={item.price}>{item.price}</option>
+                                            <option key={index} value={item.price}>{item.price}
+                                            </option>
                                         )
                                     })
                                 }
