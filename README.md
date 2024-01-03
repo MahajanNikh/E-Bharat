@@ -1,8 +1,1 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+E-Bharat is a dynamic and user-friendly website designed to streamline and enhance the online experience for users in India. With seamless integration of an efficient admin panel, the website ensures smooth management and oversight. The incorporation of Razorpay enables secure and hassle-free online transactions, providing users with a reliable payment gateway. E-Bharat is committed to offering a convenient and trustworthy platform for various online services, fostering digital connectivity and contributing to the nation's digital transformation
